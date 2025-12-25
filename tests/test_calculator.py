@@ -5,9 +5,11 @@ Test suite for the Calculator class.
 import pytest
 from calculator.calculator import Calculator, InvalidInputException
 
+
 @pytest.fixture
 def calc():
     return Calculator()
+
 
 class TestAddition:
     """Tests for the add method."""
@@ -122,7 +124,7 @@ class TestAddition:
         calc = Calculator()
         with pytest.raises(InvalidInputException):
             calc.add(-1000001, -1)
-    
+
     def test_add_too_large_values_for_b(self, calc):
         """Test adding values where the second argument exceeds the limit."""
         with pytest.raises(InvalidInputException):
@@ -145,7 +147,7 @@ class TestAddition:
 
         # Assert
         assert result == expected
-    
+
     def test_add_min_boundary_value(self, calc):
         """Test adding the exact min value"""
         # Arrange
@@ -175,7 +177,7 @@ class TestSubtraction:
 
         # Assert
         assert result == expected
-    
+
     def test_subtract_negative_numbers(self, calc):
         """Test subtracting two negative numbers."""
         # Arrange
@@ -188,7 +190,7 @@ class TestSubtraction:
 
         # Assert
         assert result == expected
-    
+
     def test_subtract_too_large_values(self):
         """Test subtracting values that exceed the maximum limit."""
         calc = Calculator()
@@ -201,7 +203,7 @@ class TestSubtraction:
         calc = Calculator()
         with pytest.raises(InvalidInputException):
             calc.subtract(-1000001, -1)
-    
+
     def test_subtract_too_large_values_for_b(self, calc):
         """Test subtracting values where the second argument exceeds the limit."""
         with pytest.raises(InvalidInputException):
@@ -216,7 +218,7 @@ class TestSubtraction:
 class TestMultiplication:
     """Tests for the multiply method."""
 
-    def test_multiply_positive_numbers(self,calc):
+    def test_multiply_positive_numbers(self, calc):
         """Test multiplying positive numbers."""
         # Arrange
         a = 5
@@ -228,7 +230,7 @@ class TestMultiplication:
 
         # Assert
         assert result == expected
-    
+
     def test_multiply_too_large_values(self):
         """Test multiplying values that exceed the maximum limit."""
         calc = Calculator()
@@ -241,7 +243,7 @@ class TestMultiplication:
         calc = Calculator()
         with pytest.raises(InvalidInputException):
             calc.multiply(-1000001, -1)
-    
+
     def test_multiply_too_large_values_for_b(self, calc):
         """Test multiplying values where the second argument exceeds the limit."""
         with pytest.raises(InvalidInputException):
@@ -274,7 +276,7 @@ class TestDivision:
         with pytest.raises(ValueError) as exc_info:
             calc.divide(10, 0)
         assert "Cannot divide by zero" in str(exc_info)
-    
+
     def test_divide_too_large_values(self):
         """Test dividing values that exceed the maximum limit."""
         calc = Calculator()
@@ -287,7 +289,7 @@ class TestDivision:
         calc = Calculator()
         with pytest.raises(InvalidInputException):
             calc.divide(-1000001, -1)
-    
+
     def test_divide_too_large_values_for_b(self, calc):
         """Test dividing values where the second argument exceeds the limit."""
         with pytest.raises(InvalidInputException):
